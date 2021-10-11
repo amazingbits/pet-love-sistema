@@ -1,0 +1,19 @@
+{
+    "name": "guilherme/senac",
+    "description": "Projeto para o sistema web da plataforma pet love",
+    "authors": [
+        {
+            "name": "Guilherme Andrade",
+            "email": "gui-keanne@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "coffeecode/router": "^1.0",
+        "twig/twig": "^3.3"
+    }
+}
