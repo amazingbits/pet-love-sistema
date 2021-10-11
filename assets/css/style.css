@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap');
-*{
+
+* {
     padding: 0;
     margin: 0;
     border: none;
@@ -13,5 +14,130 @@
 .container {
     width: 95%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 120px auto 0;
+    min-height: calc(100vh - 198px);
+}
+
+.loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(69, 109, 176, 1);
+    z-index: 99;
+}
+
+.loader img {
+    max-width: 190px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.modal {
+    position: fixed;
+    z-index: 98;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(69, 109, 176, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s linear;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal-title h3,
+.modal-title a {
+    color: #456DB0;
+}
+
+.modal-body {
+    padding: 15px 30px 30px;
+    height: calc(100vh - 200px);
+    overflow: auto;
+}
+
+.modal-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.toolbar {
+    position: fixed;
+    width: 100vw;
+    height: 100px;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toolbar .tb-logo img {
+    max-width: 150px;
+}
+
+.toolbar .tb-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tb-btn {
+    border: 3px solid #456DB0;
+    padding: 4px 8px;
+    color: #456DB0;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 23px;
+    margin-right: 12px;
+    background-color: #fff;
+    transition: all .3s linear;
+}
+
+.tb-btn:hover {
+    background-color: #456DB0;
+    color: #fff;
+}
+
+.tb-logout {
+    font-size: 22px;
+    color: #456DB0;
+}
+
+.footer {
+    background-color: #456DB0;
+    color: #fff;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+    padding: 30px 10px;
 }

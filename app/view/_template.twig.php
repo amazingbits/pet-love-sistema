@@ -12,8 +12,44 @@
 </head>
 <body>
 
+<!--Loader-->
+<div class="loader">
+    <img src="{{BASE_PATH}}/assets/img/dog-walking.gif" alt="Carregando...">
+</div>
+
+<!--Modal-->
+<div class="modal">
+    <div class="modal-content">
+        <div class="modal-title">
+            <h3>Modal Title</h3>
+            <a href="#" id="modal-close"><i class="fas fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            {% for i in 1..50 %}
+            <p>Conteúdo do modal...</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!--Toolbar-->
+<div class="toolbar">
+    <div class="tb-logo">
+        <a href="{{BASE_PATH}}"><img src="{{BASE_PATH}}/assets/img/logo.png" alt="Pet Love"></a>
+    </div>
+    <div class="tb-options">
+        <a href="#" class="tb-btn">Minha Conta</a>
+        <a href="#" class="tb-logout"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+</div>
+
 <div class="container">
 {% block content %} {% endblock %}
+</div>
+
+<!--Footer-->
+<div class="footer">
+    <p>Desenvolvido com muito ❤ - Pet Love</p>
 </div>
 
 <script src="{{BASE_PATH}}/assets/js/vendor/jquery.3.6.0.js"></script>
