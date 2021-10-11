@@ -14,8 +14,8 @@
 .container {
     width: 95%;
     max-width: 1200px;
-    margin: 120px auto 0;
-    min-height: calc(100vh - 198px);
+    margin: 140px auto 0;
+    min-height: calc(100vh - 248px);
 }
 
 .loader {
@@ -104,6 +104,12 @@
     max-width: 150px;
 }
 
+@media screen and (max-width: 382px) {
+    .toolbar .tb-logo img {
+        max-width: 80px;
+    }
+}
+
 .toolbar .tb-options {
     display: flex;
     align-items: center;
@@ -140,4 +146,267 @@
     font-weight: 300;
     text-align: center;
     padding: 30px 10px;
+    margin-top: 30px;
+}
+
+.hotlinks {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+}
+
+@media screen and (max-width: 440px) {
+    .hotlinks .hl-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.hl-btn {
+    padding: 15px 30px;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 15px;
+    transition: all .3s linear;
+}
+
+.hl-btn:hover {
+    filter: brightness(90%);
+}
+
+.hl-btn i {
+    opacity: 0.5;
+    margin-right: 6px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .hl-today {
+        display: none;
+    }
+}
+
+.hl-today p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #456DB0;
+}
+
+.title {
+    display: grid;
+    grid-template-columns: 50px 120px 1fr;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title h3 {
+    font-size: 15px;
+    line-height: 25px;
+    color: #456DB0;
+}
+
+.title div {
+    width: 100%;
+    height: 3px;
+    background-color: #456DB0;
+}
+
+.legend {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 400px) {
+    .legend {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr;
+    }
+}
+
+.legend-single {
+    margin-right: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.legend-single div {
+    display: block;
+    width: 15px;
+    height: 15px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4);
+    margin-right: 8px;
+}
+
+.legend-single span {
+    color: #456DB0;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.schedule-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+    transition: all .3s linear;
+    border-radius: 15px;
+}
+
+.schedule-card:hover {
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+.schedule-card .sc-info {
+    display: inline-flex;
+    align-items: center;
+}
+
+.schedule-card .sc-info img {
+    max-width: 40px;
+}
+
+.schedule-card p {
+    display: block;
+    padding: 0 15px;
+    text-align: center;
+    font-weight: 700;
+    color: #456DB0;
+    border-right: 1px solid #456DB0;
+}
+
+.schedule-card p:nth-of-type(3) {
+    border: none;
+}
+
+.sc-marked {
+    background-color: rgba(102, 187, 106, 0.2);
+}
+
+.sc-cancelled {
+    background-color: rgba(239, 83, 80, 0.2);
+}
+
+.sc-options a {
+    font-size: 20px;
+    margin-right: 8px;
+    color: #456DB0;
+}
+
+@media screen and (max-width: 560px) {
+    .schedule-card p:nth-of-type(2),
+    .schedule-card p:nth-of-type(3) {
+        display: none;
+    }
+
+    .schedule-card p:nth-of-type(1) {
+        border: none;
+    }
+}
+
+.animal-resume {
+    width: 100%;
+    text-align: center;
+}
+
+.animal-resume img {
+    max-width: 60px;
+}
+
+.animal-resume h3 {
+    color: #456DB0;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.animal-resume .animal-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    margin-bottom: 8px;
+}
+
+.animal-resume .animal-info p {
+    font-size: 15px;
+    line-height: 25px;
+    opacity: 0.7;
+    border-right: 1px solid #ccc;
+}
+
+.animal-resume .animal-info p:nth-of-type(1) {
+    border-left: 1px solid #ccc;
+}
+
+.animal-owner {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.form-btn {
+    font-weight: 700;
+    color: #456DB0;
+}
+
+form {
+    margin: 10px 0;
+}
+
+form label {
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 300;
+    color: #456DB0;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="date"],
+form input[type="email"],
+form input[type="file"],
+form input[type="time"],
+form select,
+form textarea {
+    width: 100%;
+    margin: 8px 0 16px;
+    padding: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #424242;
+    font-size: 15px;
+    line-height: 25px;
+    border-bottom: 4px solid #fff;
+    transition: all .3s linear;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="date"]:focus,
+form input[type="email"]:focus,
+form input[type="file"]:focus,
+form input[type="time"]:focus,
+form select:focus,
+form textarea:focus {
+    border-bottom: 4px solid #456DB0;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    background-color: #456DB0;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
 }

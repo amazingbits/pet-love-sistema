@@ -21,13 +21,11 @@
 <div class="modal">
     <div class="modal-content">
         <div class="modal-title">
-            <h3>Modal Title</h3>
+            <h3></h3>
             <a href="#" id="modal-close"><i class="fas fa-times"></i></a>
         </div>
         <div class="modal-body">
-            {% for i in 1..50 %}
-            <p>Conteúdo do modal...</p>
-            {% endfor %}
+            <!--conteúdo do modal-->
         </div>
     </div>
 </div>

@@ -11,6 +11,9 @@ $router->namespace("App\Controller");
 $router->group(null);
 $router->get("/", "HomeController:index");
 
+$router->group("auth");
+$router->get("/", "AuthController:login");
+
 $router->dispatch();
 
 if($router->error()) {
