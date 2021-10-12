@@ -1,20 +1,15 @@
 {% extends "_template.twig.php" %}
 {% block content %}
 
-<div class="hotlinks">
-    <div class="hl-links">
-        <a href="{{BASE_PATH}}/schedule" class="hl-btn" style="background-color: #1e88e5;"><i class="fas fa-calendar-day"></i> Agenda</a>
-        <a href="{{BASE_PATH}}/services" class="hl-btn" style="background-color: #f57c00;"><i class="fab fa-codepen"></i> Serviços</a>
-    </div>
-    <div class="hl-today">
-        <p>20 de Setembro de 2021 - Segunda-feira</p>
-    </div>
-</div>
-
 <div class="title">
     <div></div>
-    <h3>Hoje</h3>
+    <h3>Agenda</h3>
     <div></div>
+</div>
+
+<div class="calendarSection">
+    <label id="cdButton" for="cdHidden"><i class="fas fa-calendar"></i></label>
+    <input type="text" class="datepicker" id="cdHidden">
 </div>
 
 <div class="legend">

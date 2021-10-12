@@ -498,3 +498,21 @@ form input[type="submit"] {
     line-height: 25px;
     color: #424242;
 }
+
+.calendarSection {
+    margin-bottom: 80px;
+}
+
+#cdHidden {
+    opacity: 0;
+    width: 1px;
+}
+
+#cdButton {
+    padding: 12px;
+    background-color: #456DB0;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+}

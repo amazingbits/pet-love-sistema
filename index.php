@@ -28,6 +28,10 @@ $router->get("/erase/{imgName}/{folderName}", "ImageController:erase");
 $router->group("services");
 $router->get("/", "ServiceController:index");
 
+// Schedules
+$router->group("schedule");
+$router->get("/", "ScheduleController:index");
+
 $router->dispatch();
 
 if($router->error()) {
