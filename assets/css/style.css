@@ -447,6 +447,12 @@ form input[type="submit"] {
     align-items: center;
 }
 
+@media screen and (max-width: 470px) {
+    .form-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
 .form-img {
     width: 100%;
     text-align: center;
