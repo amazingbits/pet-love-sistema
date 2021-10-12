@@ -59,3 +59,64 @@ $(".abrirExame").click(function (e) {
     $(".modal .modal-body").html(html);
     $(".modal").addClass("modal-show");
 });
+
+$("#authForm").submit(function(e) {
+    e.preventDefault();
+    const login = $("input[name='login']").val();
+    const senha = $("input[name='senha']").val();
+    const data = {login, senha};
+
+    $.ajax({
+        url: apiPath + "/auth/login",
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        error: function(error) {
+            alert("Erro ao enviar requisição! Tente novamente mais tarde");
+            console.log(error.responseText);
+        },
+        success: function(response, textStatus, xhr) {
+            alert(response.message);
+            if(xhr.status === 200) {
+                let hash = response.hash;
+                setCookie("hash", hash, 10);
+                window.location.href = path;
+            }
+        }
+    });
+});
+
+$("#btn-logout").click(function(e) {
+    e.preventDefault();
+    let opt = confirm("Tem certeza que deseja sair?");
+    if(opt) {
+        eraseCookie("hash");
+        window.location.href = path;
+    } else {
+        return false;
+    }
+});
+
+function setCookie(name,value,days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for(let i=0;i < ca.length;i++) {
+        let c = ca[i];
+        while (c.charAt(0)===' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}

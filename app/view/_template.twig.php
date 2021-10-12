@@ -37,7 +37,7 @@
     </div>
     <div class="tb-options">
         <a href="#" class="tb-btn">Minha Conta</a>
-        <a href="#" class="tb-logout"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="#" class="tb-logout" id="btn-logout"><i class="fas fa-sign-out-alt"></i></a>
     </div>
 </div>
 

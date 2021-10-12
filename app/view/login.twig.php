@@ -116,9 +116,9 @@
         <a href="#">Cadastrar</a>
     </div>
 
-    <form action="" method="POST">
+    <form action="" method="POST" id="authForm">
         <div>
-            <input type="email" name="email" id="email" placeholder="E-mail" autocomplete="no" autofocus required>
+            <input type="text" name="login" id="login" placeholder="Login" autocomplete="no" autofocus required>
         </div>
         <div>
             <input type="password" name="senha" id="senha" placeholder="Senha" required>
