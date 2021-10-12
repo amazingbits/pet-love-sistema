@@ -24,6 +24,10 @@ $router->post("/save", "UserController:save");
 $router->group("image");
 $router->get("/erase/{imgName}/{folderName}", "ImageController:erase");
 
+// Services
+$router->group("services");
+$router->get("/", "ServiceController:index");
+
 $router->dispatch();
 
 if($router->error()) {

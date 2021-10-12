@@ -4,7 +4,7 @@
 <div class="hotlinks">
     <div class="hl-links">
         <a href="#" class="hl-btn" style="background-color: #1e88e5;"><i class="fas fa-calendar-day"></i> Agenda</a>
-        <a href="#" class="hl-btn" style="background-color: #f57c00;"><i class="fab fa-codepen"></i> Serviços</a>
+        <a href="{{BASE_PATH}}/services" class="hl-btn" style="background-color: #f57c00;"><i class="fab fa-codepen"></i> Serviços</a>
     </div>
     <div class="hl-today">
         <p>20 de Setembro de 2021 - Segunda-feira</p>
