@@ -11,8 +11,18 @@ $router->namespace("App\Controller");
 $router->group(null);
 $router->get("/", "HomeController:index");
 
+// Auth
 $router->group("auth");
 $router->get("/", "AuthController:login");
+
+// User
+$router->group("user");
+$router->get("/new", "UserController:new");
+$router->post("/save", "UserController:save");
+
+// Image
+$router->group("image");
+$router->get("/erase/{imgName}/{folderName}", "ImageController:erase");
 
 $router->dispatch();
 
