@@ -133,6 +133,7 @@
     </div>
 </div>
 <script src="{{BASE_PATH}}/assets/js/vendor/jquery.3.6.0.js"></script>
+<script src="{{BASE_PATH}}/assets/js/vendor/jquery.ui.js"></script>
 <script src="{{BASE_PATH}}/assets/js/scripts.js"></script>
 </body>
 </html>
