@@ -87,7 +87,7 @@ $("#authForm").submit(function (e) {
             alert(response.message);
             if (xhr.status === 200) {
                 let hash = response.hash;
-                setCookie("hash", hash, 10);
+                //setCookie("hash", hash, 10);
                 window.location.href = path;
             }
         }
