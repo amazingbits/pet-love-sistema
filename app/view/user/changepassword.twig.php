@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{BASE_PATH}}/assets/img/favicon.png" type="image/x-icon">
-    <title>Pet Love - Login</title>
+    <title>Pet Love - Nova Senha</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap');
 
@@ -107,31 +107,74 @@
             font-size: 12px;
             line-height: 22px;
         }
+
+        .infobox {
+            background-color: rgba(237, 237, 237, 0.4);
+            margin: 15px 0 25px;
+            padding: 6px 12px;
+            text-align: left;
+        }
+
+        .infobox span {
+            color: #636363;
+            font-weight: 300;
+            font-size: 12px;
+        }
+
+        .result {
+            padding: 12px;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            display: none;
+        }
+
+        .r-green {
+            background-color: #388e3c;
+        }
+
+        .r-red {
+            background-color: #EF5350;
+        }
+
+        .load {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            display: none;
+        }
     </style>
 </head>
 <body>
 <div class="login-box">
+    <div class="result r-red">
+        <p>E-mail enviado com sucesso!</p>
+    </div>
     <img src="{{BASE_PATH}}/assets/img/logo.png" alt="Pet Love">
     <div class="options">
-        <a href="{{BASE_PATH}}/user/new">Cadastrar</a>
+        <a href="{{BASE_PATH}}">Voltar</a>
     </div>
 
-    <form action="" method="POST" id="authForm">
+    <form action="" method="POST" id="changePassword">
+        <input type="hidden" name="idUser" id="idUser" value="{{idUser}}">
         <div>
-            <input type="email" name="email" id="email" placeholder="E-mail" autocomplete="no" autofocus required>
+            <input type="text" name="codigo" id="codigo" placeholder="Código" autocomplete="no" autofocus required>
         </div>
         <div>
-            <input type="password" name="senha" id="senha" placeholder="Senha" required>
+            <input type="password" name="senha" id="senha" placeholder="Nova senha" autocomplete="no" autofocus required>
         </div>
         <div>
-            <input type="submit" value="Entrar">
+            <input type="submit" value="Mudar senha">
         </div>
     </form>
-
-    <div style="text-align: right">
-        <a href="{{BASE_PATH}}/user/forgotpassword" class="form-btn">Esqueci minha senha</a>
-    </div>
 </div>
+<div class="load"></div>
 <script src="{{BASE_PATH}}/assets/js/vendor/jquery.3.6.0.js"></script>
 <script src="{{BASE_PATH}}/assets/js/vendor/jquery.ui.js"></script>
 <script src="{{BASE_PATH}}/assets/js/scripts.js"></script>

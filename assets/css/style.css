@@ -522,3 +522,70 @@ form input[type="submit"] {
     cursor: pointer;
     border-radius: 15px;
 }
+
+.alert-default {
+    position: fixed;
+    z-index: 90;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transition: all .5s linear;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.alert-content {
+    position: absolute;
+    width: 500px;
+    height: auto;
+    max-width: 90%;
+    min-height: 200px;
+    max-height: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+    left: 50%;
+    top: 90px;
+    transform: translateX(-50%);
+    padding: 25px;
+}
+
+.alert-show {
+    opacity: 1 !important;
+    visibility: visible; !important;
+}
+
+.alert-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.alert-title h3,
+.alert-title a {
+    font-size: 16px;
+    line-height: 26px;
+    color: #424242;
+}
+
+.alert-body {
+    margin-bottom: 40px;
+}
+
+.alert-footer {
+    text-align: center;
+}
+
+.alert-footer .alert-btn {
+    padding: 6px 24px;
+    border-radius: 15px;
+    background-color: #456DB0;
+    color: #fff;
+    font-weight: 700;
+}

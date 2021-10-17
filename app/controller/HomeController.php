@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\DefaultController;
+use App\Helper\CurrentInformationHelper;
 
 class HomeController extends DefaultController
 {
@@ -11,6 +12,11 @@ class HomeController extends DefaultController
         if(!isset($_COOKIE["hash"])) {
             header("Location: " . BASE_PATH . "/auth");
         }
-        $this->render("home");
+        $currentInformationHelper = new CurrentInformationHelper();
+        $data = [
+            "now" => $currentInformationHelper->getCurrentDateInformation()
+        ];
+
+        $this->render("home", $data);
     }
 }

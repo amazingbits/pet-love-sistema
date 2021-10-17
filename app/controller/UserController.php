@@ -12,6 +12,26 @@ class UserController extends DefaultController
         $this->render("user/new");
     }
 
+    public function forgotPassword()
+    {
+        $this->render("user/forgotpassword");
+    }
+
+    public function changePassword($data)
+    {
+        $id = (int)$data["idUser"];
+        $code = $data["code"];
+
+        if(!isset($_COOKIE["forgotpassword"])) {
+            header("Location: " . BASE_PATH . "/auth");
+        }
+
+        $data = [
+            "idUser" => $id
+        ];
+        $this->render("user/changepassword", $data);
+    }
+
     public function save()
     {
         $res = [];

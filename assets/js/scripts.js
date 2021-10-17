@@ -5,6 +5,14 @@ $(window).on("load", function (e) {
     $(".loader").fadeOut();
 });
 
+$("html").click(function (e) {
+    const tClass = e.target.className;
+    const el = $(".alert-default");
+    if (tClass === "alert-default alert-show") {
+        el.removeClass("alert-show");
+    }
+});
+
 $("#modal-close").click(function (e) {
     e.preventDefault();
     $(".modal").removeClass("modal-show");
@@ -289,8 +297,80 @@ $("#cdHidden").datepicker({
     prevText: 'Anterior'
 });
 
-$("#cdHidden").on("change", function(e) {
+$("#cdHidden").on("change", function (e) {
     console.log("buscar agendas para a data: " + $(this).val());
+});
+
+$("#forgotPassword").submit(function (e) {
+    e.preventDefault();
+    const email = $("input[name='email']").val().trim();
+    $.ajax({
+        url: apiPath + "/forgotpassword/" + email,
+        type: "GET",
+        dataType: "json",
+        async: true,
+        beforeSend: function () {
+            $(".load").fadeIn();
+        },
+        error: function (error) {
+            console.clear();
+            $(".load").fadeOut();
+            const res = error.responseJSON;
+            const html = `
+                <p>${res.message}</p>
+            `;
+            $(".result").removeClass("r-green");
+            $(".result").addClass("r-red");
+            $(".result").html(html);
+            $(".result").show();
+        },
+        success: function (response) {
+            $(".load").fadeOut();
+            const html = `
+                <p>${response.message}</p>
+            `;
+            $(".result").removeClass("r-red");
+            $(".result").addClass("r-green");
+            $(".result").html(html);
+            $(".result").show();
+            $("input[name='email']").val("");
+        }
+    });
+});
+
+$("#changePassword").submit(function (e) {
+    e.preventDefault();
+    const id = Number($("input[name='idUser']").val());
+    const codigo = $("input[name='codigo']").val().trim();
+    const senha = $("input[name='senha']").val().trim();
+    const jwt = getCookie("forgotpassword");
+    const data = {id, codigo, senha, jwt};
+
+    $.ajax({
+        url: apiPath + "/forgotpassword/changepassword",
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify(data),
+        processData: false,
+        contentType: "application/json; charset=utf-8",
+        async: true,
+        beforeSend: function() {
+            $(".load").fadeIn();
+        },
+        error: function(error) {
+            console.clear();
+            $(".load").fadeOut();
+            alert(error.responseJSON.message);
+        },
+        success: function(response, statusText, xhr) {
+            $(".load").fadeOut();
+            alert(response.message);
+            if(xhr.status === 200) {
+                eraseCookie("forgotpassword");
+                window.location.href = path;
+            }
+        }
+    });
 });
 
 // ===== FUNÇÕES ======
@@ -327,4 +407,13 @@ async function eraseImage(imgName, imgFolder) {
     }).then(async function (response) {
         return response.status;
     });
+}
+
+function message(title, message) {
+    const el = $(".alert-default");
+    const elTitle = $(".alert-title h3");
+    const elBody = $(".alert-body");
+    elTitle.html(title);
+    elBody.html("<p>" + message + "</p>");
+    el.addClass("alert-show");
 }

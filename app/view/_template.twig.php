@@ -31,6 +31,22 @@
     </div>
 </div>
 
+<!--Alert-->
+<div class="alert-default">
+    <div class="alert-content">
+        <div class="alert-title">
+            <h3>Título do alerta</h3>
+            <a href="#" class="alert-close"><i class="fas fa-times"></i></a>
+        </div>
+        <div class="alert-body">
+            <p>Mensagem do alert</p>
+        </div>
+        <div class="alert-footer">
+            <a href="" class="alert-btn">Ok</a>
+        </div>
+    </div>
+</div>
+
 <!--Toolbar-->
 <div class="toolbar">
     <div class="tb-logo">

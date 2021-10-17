@@ -19,6 +19,8 @@ $router->get("/", "AuthController:login");
 $router->group("user");
 $router->get("/new", "UserController:new");
 $router->post("/save", "UserController:save");
+$router->get("/forgotpassword", "UserController:forgotPassword");
+$router->get("/changepassword/{idUser}/{code}", "UserController:changePassword");
 
 // Image
 $router->group("image");
