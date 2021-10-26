@@ -241,51 +241,6 @@ $("input[name='img']").on("change", function (e) {
     }
 });
 
-$("#new-service-btn").click(function (e) {
-    e.preventDefault();
-    let html = `
-        <form action="" method="POST" id="newService">
-            <div>
-                <label for="descricao">Serviço:</label>
-                <input type="text" name="descricao" id="descricao">
-            </div>
-            <div>
-                <label for="dia_semana">Dia da semana:</label>
-                <select name="dia_semana" id="dia_semana">
-                    <option value="0">Domingo</option>
-                    <option value="1">Segunda</option>
-                    <option value="2">Terça</option>
-                    <option value="3">Quarta</option>
-                    <option value="4">Quinta</option>
-                    <option value="5">Sexta</option>
-                    <option value="6">Sábado</option>
-                </select>
-            </div>
-            <div>
-                <label for="hora_inicio">Hora início:</label>
-                <input type="time" name="hora_inicio" id="hora_inicio">
-            </div>
-            <div>
-                <label for="hora_fim">Hora fim:</label>
-                <input type="time" name="hora_fim" id="hora_fim">
-            </div>
-            <div>
-                <label for="intervalo">Intervalo:</label>
-                <select name="intervalo" id="intervalo">
-                    <option value="10">10 minutos</option>
-                    <option value="20">20 minutos</option>
-                    <option value="30">30 minutos</option>
-                </select>
-            </div>
-            <div>
-                <input type="submit" style="background-color: #f57c00;" value="Inserir">
-            </div>
-        </form>
-    `;
-    $(".modal .modal-body").html(html);
-    $(".modal").addClass("modal-show");
-});
-
 $("#cdHidden").datepicker({
     dateFormat: "yy-mm-dd",
     dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
@@ -371,6 +326,31 @@ $("#changePassword").submit(function (e) {
             }
         }
     });
+});
+
+$("body").on("click", ".visibility", function(e) {
+    e.preventDefault();
+    const endPoint = $(this).attr("data-endpoint");
+    const page = $(this).attr("data-page");
+    $.ajax({
+        url: apiPath + endPoint,
+        method: "GET",
+        dataType: "json",
+        processData: false,
+        contentType: "application/json; charset=utf-8",
+        error: function(error) {
+            alert(error.responseJSON.message);
+            return false;
+        },
+        success: function(response, responseText, xhr) {
+            alert(response.message);
+            if(xhr.status === 200 || xhr.status === 201) {
+                window.location.href = path + page;
+            }
+            return false;
+        }
+    });
+    console.log(endPoint);
 });
 
 // ===== FUNÇÕES ======

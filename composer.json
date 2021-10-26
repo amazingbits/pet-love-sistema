@@ -15,6 +15,7 @@
     "require": {
         "coffeecode/router": "^1.0",
         "twig/twig": "^3.3",
-        "phpmailer/phpmailer": "^6.5"
+        "phpmailer/phpmailer": "^6.5",
+        "firebase/php-jwt": "^5.4"
     }
 }

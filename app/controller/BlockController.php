@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Core\DefaultController;
 use App\Helper\JWTHelper;
 
-class ServiceController extends DefaultController
+class BlockController extends DefaultController
 {
     private JWTHelper $jwtHelper;
 
@@ -32,16 +32,27 @@ class ServiceController extends DefaultController
                 "ignore_errors" => true
             ]
         ]);
-        $response = file_get_contents(API_URL . "/agenda/myappointments/" . $userId, null, $ctx);
+
+        $response = file_get_contents(API_URL . "/bloqueio/myblocks/" . $userId, null, $ctx);
         if(http_response_code() !== 200) {
             $response = [];
         } else {
             $response = json_decode($response);
         }
+
+        $agendas = file_get_contents(API_URL . "/agenda/myappointments/" . $userId, null, $ctx);
+        if(http_response_code() !== 200) {
+            $agendas = [];
+        } else {
+            $agendas = json_decode($agendas);
+        }
+
         $data = [
-            "agendas" => $response
+            "bloqueios" => $response,
+            "agendas" => $agendas,
+            "userId" => $userId
         ];
 
-        $this->render("services/index", $data);
+        $this->render("blocks/index", $data);
     }
 }

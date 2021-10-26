@@ -34,6 +34,10 @@ $router->get("/", "ServiceController:index");
 $router->group("schedule");
 $router->get("/", "ScheduleController:index");
 
+// Blocks
+$router->group("blocks");
+$router->get("/", "BlockController:index");
+
 $router->dispatch();
 
 if($router->error()) {

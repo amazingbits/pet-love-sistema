@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{BASE_PATH}}/assets/css/style.css">
     <link rel="stylesheet" href="{{BASE_PATH}}/assets/css/vendor/jquery.ui.css">
+    {% block css %} {% endblock %}
     <link rel="shortcut icon" href="{{BASE_PATH}}/assets/img/favicon.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/2b3f85b228.js" crossorigin="anonymous"></script>
     <title>{% if title %} {{title}} {% else %} Pet Love - Sistema {% endif %}</title>
