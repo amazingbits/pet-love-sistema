@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{{BASE_PATH}}/assets/css/style.css">
     <link rel="shortcut icon" href="{{BASE_PATH}}/assets/img/favicon.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/2b3f85b228.js" crossorigin="anonymous"></script>
+    <!--Map Box-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     <title>Pet Love - Nova Empresa</title>
 </head>
 <body>
@@ -55,7 +58,10 @@
                     <input type="password" name="senha" id="senha" autocomplete="off">
                 </div>
             </div>
-            
+
+            <!--Map-->
+            <div id="map" style="width: 100%; height: 200px; border-radius: 15px; margin: 25px 0;"></div>
+
             <div class="form-2">
                 <div>
                     <label for="cep">CEP:</label>
@@ -88,6 +94,9 @@
                     <input type="text" name="estado" id="estado" autocomplete="off">
                 </div>
             </div>
+
+            <input type="hidden" name="latitude" id="latitude" value="0" autocomplete="off">
+            <input type="hidden" name="longitude" id="longitude" value="0" autocomplete="off">
             
             <div>
                 <input type="submit" value="Cadastrar">
@@ -97,6 +106,7 @@
 </div>
 
 <script src="{{BASE_PATH}}/assets/js/vendor/jquery.3.6.0.js"></script>
+<script src="{{BASE_PATH}}/assets/js/vendor/jquery.ui.js"></script>
 <script src="{{BASE_PATH}}/assets/js/vendor/jquery.mask.js"></script>
 <script src="{{BASE_PATH}}/assets/js/scripts.js"></script>
 <script>
@@ -140,6 +150,90 @@
             }
 
         });
+    });
+
+    mapboxgl.accessToken = "pk.eyJ1Ijoic3VwZXJtcm1vbmtzIiwiYSI6ImNrdjlsenBwajBieXEyeG5vanZ0NzBsN28ifQ.urh3DZFf-3fn1utGRSSv2w";
+    map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/dark-v10",
+        center: [-48.5444781, -27.5951631],
+        zoom: 15
+    });
+
+    $("input[name='cep'], input[name='rua'], input[name='numero'], input[name='cidade'], input[name='estado']").focusout(async function(e) {
+        setTimeout(async function() {
+            const rua = $("input[name='rua']").val().trim();
+            const numero = $("input[name='numero']").val().trim();
+            const cidade = $("input[name='cidade']").val().trim();
+            const estado = $("input[name='estado']").val().trim();
+            let query = "";
+            if(rua.length > 0) query += ` ${rua} `;
+            if(numero.length > 0) query += ` ${numero} `;
+            if(cidade.length > 0) query += ` ${cidade} `;
+            if(estado.length > 0) query += ` ${estado} `;
+            query = query.trim();
+            query = query.replaceAll("  ", " ");
+
+            const accessToken = "pk.eyJ1Ijoic3VwZXJtcm1vbmtzIiwiYSI6ImNrdjlsenBwajBieXEyeG5vanZ0NzBsN28ifQ.urh3DZFf-3fn1utGRSSv2w";
+            const apiPath = `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${accessToken}`;
+
+            if(query.trim().length > 0) {
+                const localMap = await fetch(apiPath, {method: "GET"})
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .catch(function (error) {
+                        return error.json();
+                    });
+
+                if(localMap.features.length > 0) {
+                    const point = localMap.features[0];
+                    const latitude = parseFloat(point.center[0]);
+                    const longitude = parseFloat(point.center[1]);
+                    $("input[name='latitude']").val(latitude);
+                    $("input[name='longitude']").val(longitude);
+                    const coords = [latitude, longitude];
+                    map.flyTo({center: coords});
+
+                    map.getStyle().layers.forEach(function (layer) {
+                        if(layer.id.match(/source/g)) {
+                            map.removeLayer(layer.id);
+                            map.removeSource(layer.id);
+                        }
+                    });
+
+                    const source = Math.ceil((Math.random() * 1000000 - 1 + 1) + 1);
+                    const sId = "source" + source;
+
+                    map.addSource(sId, {
+                        type: "geojson",
+                        data: {
+                            type: "FeatureCollection",
+                            features: [
+                                {
+                                    type: "Feature",
+                                    geometry: {
+                                        type: "Point",
+                                        coordinates: coords
+                                    },
+                                    properties: {}
+                                }
+                            ]
+                        }
+                    });
+
+                    map.addLayer({
+                        id: sId,
+                        source: sId,
+                        type: "circle",
+                        paint: {
+                            "circle-radius": 10,
+                            "circle-color": "#007cbf"
+                        }
+                    });
+                }
+            }
+        }, 500);
     });
 </script>
 </body>

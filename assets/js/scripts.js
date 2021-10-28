@@ -152,6 +152,8 @@ $("#novaEmpresa").submit(function (e) {
     const complemento = $("input[name='complemento']").val();
     const cidade = $("input[name='cidade']").val();
     const estado = $("input[name='estado']").val();
+    const latitude = $("input[name='latitude']").val().trim();
+    const longitude = $("input[name='longitude']").val().trim();
 
     $.ajax({
         url: path + "/user/save",
@@ -190,8 +192,8 @@ $("#novaEmpresa").submit(function (e) {
                             complemento,
                             cidade,
                             estado,
-                            latitude: "",
-                            longitude: "",
+                            latitude,
+                            longitude,
                             usuario: userId
                         };
                         await fetch(apiPath + "/endereco/save", {
