@@ -382,6 +382,9 @@
             }
         }
 
+        alert("Alterações efetuadas com sucesso!");
+        window.location.href = `{{BASE_PATH}}/user/myaccount`;
+
     });
 </script>
 {% endblock %}
