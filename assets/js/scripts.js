@@ -16,7 +16,9 @@ $("html").click(function (e) {
 $("#modal-close").click(function (e) {
     e.preventDefault();
     $(".modal").removeClass("modal-show");
-    $(".modal .modal-body").html("");
+    setTimeout(function() {
+        $(".modal .modal-body").html("");
+    }, 500);
 });
 
 $(".abrirExame").click(function (e) {

@@ -54,7 +54,7 @@
         <a href="{{BASE_PATH}}"><img src="{{BASE_PATH}}/assets/img/logo.png" alt="Pet Love"></a>
     </div>
     <div class="tb-options">
-        <a href="#" class="tb-btn">Minha Conta</a>
+        <a href="{{BASE_PATH}}/user/myaccount" class="tb-btn">Minha Conta</a>
         <a href="#" class="tb-logout" id="btn-logout"><i class="fas fa-sign-out-alt"></i></a>
     </div>
 </div>
