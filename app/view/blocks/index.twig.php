@@ -118,7 +118,7 @@
         const html = `
             <div>
                 <p><b>Descrição:</b> ${bloqueio.descricao}</p>
-                <p><b>Agenda:</b> ${bloqueio.descAgenda}</p>
+                <p><b>Agenda:</b> ${bloqueio.descAgenda} - ${bloqueio.diaSemana}</p>
                 <p><b>Data inicial:</b> ${bloqueio.data_inicial}</p>
                 <p><b>Data final:</b> ${bloqueio.data_final}</p>
             </div>

@@ -15,7 +15,7 @@
 <div class="services">
     {% for agenda in agendas %}
     <div class="service" style="background-color: {% if agenda.ativo == 1 %} rgba(56, 142, 60, 0.2) {% else %} rgba(239, 83, 80, 0.2) {% endif %};">
-        <h3 style="color: #f57c00;">{{agenda.descricao}}</h3>
+        <h3 style="color: #f57c00;">{{agenda.descricao}} - {{agenda.dia_semana_ext}}</h3>
         <div>
             <a href="#" style="color: #f57c00;" title="Abrir" data-id="{{agenda.id}}" class="abrirAgenda"><i
                         class="fas fa-eye"></i></a>

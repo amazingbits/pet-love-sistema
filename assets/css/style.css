@@ -506,7 +506,11 @@ form input[type="submit"] {
 }
 
 .calendarSection {
-    margin-bottom: 80px;
+    margin-bottom: 20px;
+}
+
+.agDay {
+    margin-bottom: 40px;
 }
 
 #cdHidden {
@@ -622,4 +626,47 @@ form input[type="submit"] {
 
 .card-options a:last-of-type {
     margin-right: 0;
+}
+
+.form-row {
+    width: 100%;
+    margin: 50px 0 20px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 11px;
+    line-height: 21px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-row select {
+    width: 100%;
+    margin: 8px 0 16px;
+    padding: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #424242;
+    font-size: 15px;
+    line-height: 25px;
+    border-bottom: 4px solid #ccc;
+    transition: all .3s linear;
+}
+
+.schedule-card-empty {
+    padding: 20px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+    transition: all .3s linear;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.schedule-card-empty p {
+    font-weight: 700;
+    color: #ccc;
+    font-size: 20px;
 }
