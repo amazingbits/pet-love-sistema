@@ -670,3 +670,49 @@ form input[type="submit"] {
     color: #ccc;
     font-size: 20px;
 }
+
+.my_agendas {
+    margin: 20px 0;
+    overflow: auto;
+}
+
+.my_agendas table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #456DB0;
+    min-width: 400px;
+    overflow: auto;
+}
+
+.my_agendas table th {
+    background-color: #456DB0;
+    color: #fff;
+}
+
+.my_agendas table tr:nth-child(even) {
+    background-color: #ebf5ff;
+}
+
+.my_agendas table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.my_agendas table tr {
+    border-bottom: 1px solid #456DB0;
+    border-top: 1px solid #456DB0;
+}
+
+.my_agendas table tr:hover {
+    filter: brightness(95%);
+    border-bottom: 1px solid #424242;
+    border-top: 1px solid #424242;
+}
+
+.my_agendas table th,
+.my_agendas table td {
+    padding: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 22px;
+}
